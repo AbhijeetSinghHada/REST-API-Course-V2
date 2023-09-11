@@ -15,32 +15,32 @@ var data = require('../data/vacations')
 
 
 // Save a single row
-db.save(data.SingleRow,function(err, saved){
-    if(err){
+db.save(data.SingleRow, function (err, saved) {
+    if (err) {
         console.log("Failed single row save")
         //console.log(err)
         //process.exit(1)
     } else {
-        console.log("Success - Save single row - %s",saved.name)
+        console.log("Success - Save single row - %s", saved.name)
     }
 });
 
 // Save multiple rows
-db.saveMany(data.MultipleRows,function(err, docs){
-    if(err){
+db.saveMany(data.MultipleRows, function (err, docs) {
+    if (err) {
         console.log("Failed multiple row insert")
         //console.log(err)
         //process.exit(1)
     } else {
-        console.log("Success - Multiple rows inserted - %d",docs.length)
+        console.log("Success - Multiple rows inserted - %d", docs.length)
     }
 });
 
 // Select vacations with some criteria
-var selectCriteria = {validTill : {$gt : new Date()}}
-db.select(selectCriteria, function(err, data){
-    if(err){
-        console.log("Failed to get vacations : %s",criteria)
+var selectCriteria = { validTill: { $gt: new Date() } }
+db.select(selectCriteria, function (err, data) {
+    if (err) {
+        console.log("Failed to get vacations : %s", selectCriteria)
         console.log(err)
     } else {
         console.log("Successfully selected %d documents for %s", data.length, JSON.stringify(selectCriteria))
@@ -48,10 +48,10 @@ db.select(selectCriteria, function(err, data){
 });
 
 // Update the vacations
-var updateCriteria = {name:'BAHAMAS1000'}
-var doc = {description:'UPDATED Desc for TESTING'}
-db.update(updateCriteria,doc,function(err, doc){
-    if(err){
+var updateCriteria = { name: 'BAHAMAS1000' }
+var doc = { description: 'UPDATED Desc for TESTING' }
+db.update(updateCriteria, doc, function (err, doc) {
+    if (err) {
         console.log("Failed to get update")
         console.log(err)
     } else {
